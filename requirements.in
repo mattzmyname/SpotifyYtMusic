@@ -2,4 +2,3 @@
 aws_cdk.aws_dynamodb
 aws_cdk.pipelines
 aws_cdk.core
-cdk-chalice
