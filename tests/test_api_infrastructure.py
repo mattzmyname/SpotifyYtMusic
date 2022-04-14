@@ -18,8 +18,9 @@ import pathlib
 import tempfile
 import unittest
 
+from aws_cdk import App
+from aws_cdk import Stack
 from aws_cdk import aws_dynamodb as dynamodb
-from aws_cdk import core as cdk
 
 from api.infrastructure import API
 from database.infrastructure import Database
@@ -28,8 +29,8 @@ from database.infrastructure import Database
 class APITestCase(unittest.TestCase):
     def test_endpoint_url_output_exists(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
-            app = cdk.App(outdir=temp_dir)
-            stack = cdk.Stack(app, "Stack")
+            app = App(outdir=temp_dir)
+            stack = Stack(app, "Stack")
             database = Database(
                 stack,
                 "Database",
@@ -39,7 +40,6 @@ class APITestCase(unittest.TestCase):
                 stack,
                 "API",
                 dynamodb_table=database.table,
-                lambda_reserved_concurrency=1,
             )
             cloud_assembly = app.synth()
             template = cloud_assembly.get_stack_by_name(stack.stack_name).template

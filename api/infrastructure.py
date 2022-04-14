@@ -1,6 +1,5 @@
-import pathlib
-
-from aws_cdk import (aws_dynamodb as dynamodb, aws_iam as iam)
+from aws_cdk import aws_dynamodb as dynamodb
+from aws_cdk import aws_iam as iam
 from constructs import Construct
 
 
@@ -11,7 +10,6 @@ class API(Construct):
         id_: str,
         *,
         dynamodb_table: dynamodb.Table,
-        lambda_reserved_concurrency: int,
     ):
         super().__init__(scope, id_)
 

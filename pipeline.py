@@ -2,7 +2,9 @@ import json
 import pathlib
 from typing import Any
 
-from aws_cdk import (pipelines, aws_codebuild as codebuild, Stack)
+from aws_cdk import Stack
+from aws_cdk import aws_codebuild as codebuild
+from aws_cdk import pipelines
 from constructs import Construct
 
 import constants
@@ -58,7 +60,6 @@ class Pipeline(Stack):
             self,
             f"{constants.CDK_APP_NAME}-Prod",
             env=constants.PROD_ENV,
-            api_lambda_reserved_concurrency=constants.PROD_API_LAMBDA_RESERVED_CONCURRENCY,
             database_dynamodb_billing_mode=constants.PROD_DATABASE_DYNAMODB_BILLING_MODE,
         )
         api_endpoint_url_env_var = f"{constants.CDK_APP_NAME.upper()}_API_ENDPOINT_URL"

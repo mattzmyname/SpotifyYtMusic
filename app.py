@@ -1,4 +1,4 @@
-from aws_cdk import (App)
+from aws_cdk import App
 
 import constants
 from deployment import UserManagementBackend
@@ -11,7 +11,6 @@ UserManagementBackend(
     app,
     f"{constants.CDK_APP_NAME}-Dev",
     env=constants.DEV_ENV,
-    api_lambda_reserved_concurrency=constants.DEV_API_LAMBDA_RESERVED_CONCURRENCY,
     database_dynamodb_billing_mode=constants.DEV_DATABASE_DYNAMODB_BILLING_MODE,
 )
 

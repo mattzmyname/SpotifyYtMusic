@@ -15,8 +15,8 @@
 
 import os
 
-from aws_cdk import (aws_dynamodb as dynamodb, Environment)
-
+from aws_cdk import Environment
+from aws_cdk import aws_dynamodb as dynamodb
 
 CDK_APP_NAME = "UserManagementBackend"
 CDK_APP_PYTHON_VERSION = "3.9"
@@ -36,5 +36,4 @@ DEV_DATABASE_DYNAMODB_BILLING_MODE = dynamodb.BillingMode.PAY_PER_REQUEST
 PIPELINE_ENV = Environment(account="980290784846", region="us-west-2")
 
 PROD_ENV = Environment(account="980290784846", region="us-west-2")
-PROD_API_LAMBDA_RESERVED_CONCURRENCY = 10
 PROD_DATABASE_DYNAMODB_BILLING_MODE = dynamodb.BillingMode.PROVISIONED

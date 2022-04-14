@@ -52,8 +52,12 @@ mccabe==0.6.1
     # via
     #   flake8
     #   pylint
+mypy==0.942
+    # via -r requirements-dev.in
 mypy-extensions==0.4.3
-    # via black
+    # via
+    #   black
+    #   mypy
 packaging==21.3
     # via
     #   dparse
@@ -102,7 +106,12 @@ toml==0.10.2
 tomli==2.0.1
     # via
     #   black
+    #   mypy
     #   pylint
+typing-extensions==4.1.1
+    # via
+    #   -c requirements.txt
+    #   mypy
 urllib3==1.26.9
     # via requests
 wrapt==1.14.0
