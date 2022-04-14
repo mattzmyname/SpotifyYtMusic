@@ -15,17 +15,17 @@
 
 import os
 
-from aws_cdk import ( aws_dynamodb as dynamodb, Environment)
+from aws_cdk import (aws_dynamodb as dynamodb, Environment)
 
 
 CDK_APP_NAME = "UserManagementBackend"
 CDK_APP_PYTHON_VERSION = "3.9"
 
 # pylint: disable=line-too-long
-GITHUB_CONNECTION_ARN = "CONNECTION_ARN"
-GITHUB_OWNER = "OWNER"
-GITHUB_REPO = "REPO"
-GITHUB_TRUNK_BRANCH = "TRUNK_BRANCH"
+GITHUB_CONNECTION_ARN = "arn:aws:codestar-connections:us-west-2:980290784846:connection/f8d5c1b4-9c39-4a31-b86f-2fd576481134"
+GITHUB_OWNER = "mattzmyname"
+GITHUB_REPO = "SpotifyYtMusic"
+GITHUB_TRUNK_BRANCH = "main"
 
 DEV_ENV = Environment(
     account=os.environ["CDK_DEFAULT_ACCOUNT"], region=os.environ["CDK_DEFAULT_REGION"]

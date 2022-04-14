@@ -48,7 +48,7 @@ class Pipeline(Stack):
         package_json_path = (
             pathlib.Path(__file__).resolve().parent.joinpath("package.json")
         )
-        with open(package_json_path) as package_json_file:
+        with open(package_json_path, encoding="utf8") as package_json_file:
             package_json = json.load(package_json_file)
         cdk_cli_version = str(package_json["devDependencies"]["aws-cdk"])
         return cdk_cli_version
@@ -61,13 +61,10 @@ class Pipeline(Stack):
             api_lambda_reserved_concurrency=constants.PROD_API_LAMBDA_RESERVED_CONCURRENCY,
             database_dynamodb_billing_mode=constants.PROD_DATABASE_DYNAMODB_BILLING_MODE,
         )
-        # api_endpoint_url_env_var = f"{constants.CDK_APP_NAME.upper()}_API_ENDPOINT_URL"
-        # smoke_test_commands = [f"curl ${api_endpoint_url_env_var}"]
-        # smoke_test_shell_step = pipelines.ShellStep(
-        #     "SmokeTest",
-        #     env_from_cfn_outputs={
-        #         api_endpoint_url_env_var: prod_stage.api_endpoint_url
-        #     },
-        #     commands=smoke_test_commands,
-        # )
-        # codepipeline.add_stage(prod_stage, post=[smoke_test_shell_step])
+        api_endpoint_url_env_var = f"{constants.CDK_APP_NAME.upper()}_API_ENDPOINT_URL"
+        smoke_test_commands = [f"echo ${api_endpoint_url_env_var}"]
+        smoke_test_shell_step = pipelines.ShellStep(
+            "SmokeTest",
+            commands=smoke_test_commands,
+        )
+        codepipeline.add_stage(prod_stage, post=[smoke_test_shell_step])
