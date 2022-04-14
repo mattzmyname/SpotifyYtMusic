@@ -44,7 +44,6 @@ pylint --rcfile .pylintrc "${targets[@]}"
 # Ignore coverage 5.5 (41002) report, no issues per Snyk: https://snyk.io/vuln/pip:coverage@5.5
 safety check \
   -i 41002 \
-  -r api/runtime/requirements.txt \
   -r requirements.txt \
   -r requirements-dev.txt
 
@@ -55,5 +54,5 @@ radon mi "${targets[@]}"
 xenon --max-absolute A --max-modules A --max-average A "${targets[@]}"
 
 # Run tests and measure code coverage (https://coverage.readthedocs.io)
-PYTHONPATH="${PWD}/api/runtime" \
-  coverage run --source "${PWD}" --omit ".venv/*,tests/*" -m unittest discover -v -s tests
+# PYTHONPATH="${PWD}/api/runtime" \
+#   coverage run --source "${PWD}" --omit ".venv/*,tests/*" -m unittest discover -v -s tests

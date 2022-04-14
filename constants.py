@@ -15,8 +15,8 @@
 
 import os
 
-from aws_cdk import aws_dynamodb as dynamodb
-from aws_cdk import core as cdk
+from aws_cdk import ( aws_dynamodb as dynamodb, Environment)
+
 
 CDK_APP_NAME = "UserManagementBackend"
 CDK_APP_PYTHON_VERSION = "3.9"
@@ -27,14 +27,14 @@ GITHUB_OWNER = "OWNER"
 GITHUB_REPO = "REPO"
 GITHUB_TRUNK_BRANCH = "TRUNK_BRANCH"
 
-DEV_ENV = cdk.Environment(
+DEV_ENV = Environment(
     account=os.environ["CDK_DEFAULT_ACCOUNT"], region=os.environ["CDK_DEFAULT_REGION"]
 )
 DEV_API_LAMBDA_RESERVED_CONCURRENCY = 1
 DEV_DATABASE_DYNAMODB_BILLING_MODE = dynamodb.BillingMode.PAY_PER_REQUEST
 
-PIPELINE_ENV = cdk.Environment(account="980290784846", region="us-west-2")
+PIPELINE_ENV = Environment(account="980290784846", region="us-west-2")
 
-PROD_ENV = cdk.Environment(account="980290784846", region="us-west-2")
+PROD_ENV = Environment(account="980290784846", region="us-west-2")
 PROD_API_LAMBDA_RESERVED_CONCURRENCY = 10
 PROD_DATABASE_DYNAMODB_BILLING_MODE = dynamodb.BillingMode.PROVISIONED

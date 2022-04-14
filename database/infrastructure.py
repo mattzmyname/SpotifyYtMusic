@@ -13,14 +13,14 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-from aws_cdk import aws_dynamodb as dynamodb
-from aws_cdk import core as cdk
+from aws_cdk import (aws_dynamodb as dynamodb, RemovalPolicy)
+from constructs import Construct
 
 
-class Database(cdk.Construct):
+class Database(Construct):
     def __init__(
         self,
-        scope: cdk.Construct,
+        scope: Construct,
         id_: str,
         *,
         dynamodb_billing_mode: dynamodb.BillingMode
@@ -35,5 +35,5 @@ class Database(cdk.Construct):
             "Table",
             billing_mode=dynamodb_billing_mode,
             partition_key=partition_key,
-            removal_policy=cdk.RemovalPolicy.DESTROY,
+            removal_policy=RemovalPolicy.DESTROY,
         )

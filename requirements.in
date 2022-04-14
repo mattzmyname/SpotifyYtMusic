@@ -1,5 +1,2 @@
--c api/runtime/requirements.txt
-aws_cdk.aws_dynamodb
-aws_cdk.pipelines
-aws_cdk.core
-cdk-chalice
+aws_cdk-lib
+constructs
